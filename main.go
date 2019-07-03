@@ -10,7 +10,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/gbl08ma/cachet"
+	"github.com/andygrunwald/cachet"
 	urapi "github.com/gbl08ma/uptimerobot-api"
 	"github.com/gorilla/mux"
 )
@@ -128,7 +128,8 @@ func InitialSetup() error {
 	}
 	log.Println("and here is the list of Cachet components:")
 
-	componentResponse, _, err := client.Components.GetAll()
+	queryParams := &cachet.ComponentsQueryParams{}
+	componentResponse, _, err := client.Components.GetAll(queryParams)
 	if err != nil {
 		return err
 	}
